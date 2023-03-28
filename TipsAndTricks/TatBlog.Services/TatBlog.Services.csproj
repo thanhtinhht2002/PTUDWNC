@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,10 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Blogs\" />
     <Folder Include="Extensions\" />
     <Folder Include="Media\" />
     <Folder Include="Rss\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PagedListExtensions" Version="1.1.2" />
   </ItemGroup>
 
 </Project>
