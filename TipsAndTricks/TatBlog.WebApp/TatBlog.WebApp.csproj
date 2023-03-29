@@ -13,8 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Authors\" />
+    <Folder Include="Areas\Admin\Views\Categories\" />
+    <Folder Include="Areas\Admin\Views\Comments\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Areas\Admin\Views\Tags\" />
+    <Folder Include="Areas\Admin\Views\Subcribers\" />
+    <Folder Include="Areas\Admin\Views\Posts\" />
     <Folder Include="Mapsters\" />
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\templates\emails\" />
     <Folder Include="wwwroot\uploads\pictures\" />
@@ -23,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1-pre02" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0-preview.2.23158.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.3" />
   </ItemGroup>
 
