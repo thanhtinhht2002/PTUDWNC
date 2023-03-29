@@ -12,7 +12,7 @@ using TatBlog.Data.Contexts;
 namespace TatBlog.Data.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20230328174936_InitialCreate")]
+    [Migration("20230329111319_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -20,6 +20,7 @@ namespace TatBlog.Core.Entities
         public bool Published { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
+
         public int CategoryId { get; set; }
         public int AuthorId { get; set; }
         public Category Category { get; set; }

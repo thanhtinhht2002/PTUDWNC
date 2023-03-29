@@ -1,26 +1,17 @@
-var buider = WebApplication.CreateBuilder(args);
+
+using TatBlog.WebApp.Extensions;
+var builder = WebApplication.CreateBuilder(args);
 {
-    buider.Services.AddControllersWithViews();
+    builder
+        .ConfigureMvc()
+        .ConfigureNLog()
+        .ConfigureServices();
+}
+var app = builder.Build();
+{
+    app.UseRequestPipeline();
+    app.UseBlogRoutes();
+    app.UseDataSeeder();
 }
 
-var app = buider.Build();
-{
-	if (app.Environment.IsDevelopment())
-	{
-		app.UseDeveloperExceptionPage();
-	}
-	else
-	{
-		app.UseExceptionHandler("/Blog/Error");
-		app.UseHsts();
-	}
-	app.UseHttpsRedirection();
-
-	app.UseStaticFiles();
-
-	app.UseRouting();
-
-	app.MapControllerRoute(
-		name: "default",
-		pattern: "{controller=Blog}/{action=Index}/{id?}");
-}
+app.Run();

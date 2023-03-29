@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,20 @@ namespace TatBlog.Data.Mappings
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Categories");
-            builder.HasKey(a => a.Id);
-            builder.Property(a => a.Name).IsRequired().HasMaxLength(50);
-            builder.Property(a => a.Description).HasMaxLength(500);
-            builder.Property(a => a.UrlSlug).IsRequired().HasMaxLength(50);
-            builder.Property(a => a.ShowOnMenu).IsRequired().HasDefaultValue(false);
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Name)
+                .HasMaxLength(50)
+                .IsRequired();
+            builder.Property(p => p.Description)
+              .HasMaxLength(500);
+            builder.Property(p => p.UrlSlug)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(p => p.ShowOnMenu)
+                .IsRequired()
+                .HasDefaultValue(false);
+
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,15 @@ namespace TatBlog.Data.Mappings
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.ToTable("Tags");
-            builder.HasKey(a => a.Id);
-            builder.Property(a => a.Name).IsRequired().HasMaxLength(50);
-            builder.Property(a => a.Description).HasMaxLength(500);
-            builder.Property(a => a.UrlSlug).IsRequired().HasMaxLength(50);
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Name)
+                .HasMaxLength(50)
+                .IsRequired();
+            builder.Property(t => t.Description)
+                .HasMaxLength(500);
+            builder.Property(t => t.UrlSlug)
+                .HasMaxLength(50)
+                .IsRequired();
         }
     }
 }
