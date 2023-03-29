@@ -7,9 +7,14 @@ using TatBlog.Data.Contexts;
 using TatBlog.Data.Seeders;
 using TatBlog.Services.Blogs;
 
+
+
+
+
 // tạo dối tượng dbcontext để quản lý phiên làm việc
 // với CSDL và trạng thái của các đối tượng
 var context = new BlogDbContext();
+
 
 //đọc danh sách các bài viết từ cở sở dữ liệu
 // Lấy kèm tên các tác giả & chuyên mục
@@ -41,8 +46,6 @@ foreach (var post in posts)
     Console.WriteLine("Category     :{0}",post.Category);
     Console.WriteLine("".PadRight(80, '-'));
 }
-
-
 
 //(1)
 //var seeder = new DataSeeder(context);
