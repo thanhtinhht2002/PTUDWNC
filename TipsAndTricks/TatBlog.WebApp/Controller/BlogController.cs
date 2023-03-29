@@ -20,7 +20,9 @@ namespace TatBlog.WebApp.Controllers
                 PublishedOnly = true,
                 KeyWord = keyword
             };
+
             var postsList = await _blogRepository
+
                 .GetPagedPostsAsync(postQuery, pageNumber, pageSize);
 
             ViewBag.PostQuery = postQuery;
@@ -45,39 +47,6 @@ namespace TatBlog.WebApp.Controllers
 
             return View(posts);
         }
-        public IActionResult Rss() => Content("Nội dung sẽ được cập nhật");
-        public async Task<IActionResult> Post(
-                            int year = 2023,
-                            int month = 1,
-                            int day = 1,
-                            string slug = null)
-        {
-            if (slug == null) return NotFound();
-
-            var post = await _blogRepository.GetPostAsync(year, month, day, slug);
-
-            if (post == null) return Content("Không tìm thấy bài viết nào");
-
-
-
-            return View(post);
-        }
-
-
-        public async Task<IActionResult> Category(
-                           string slug = null)
-        {
-            if (slug == null) return NotFound();
-
-            var postQuery = new PostQuery
-            {
-                CategorySlug = slug
-            };
-
-            var posts = await _blogRepository.GetPostByQueryAsync(postQuery);
-
-            return View(posts);
-        }
         public async Task<IActionResult> Tag(
                           string slug = null)
         {
@@ -95,6 +64,37 @@ namespace TatBlog.WebApp.Controllers
 
             return View(posts);
         }
+        public IActionResult Rss() => Content("Nội dung sẽ được cập nhật");
+        public async Task<IActionResult> Post(
+                            int year = 2023,
+                            int month = 1,
+                            int day = 1,
+                            string slug = null)
+        {
+            if (slug == null) return NotFound();
+
+            var post = await _blogRepository.GetPostAsync(year, month, day, slug);
+
+            if (post == null) return Content("Không tìm thấy bài viết nào");
+
+            return View(post);
+        }
+
+
+        public async Task<IActionResult> Category(string slug = null)
+        {
+            if (slug == null) return NotFound();
+
+            var postQuery = new PostQuery
+            {
+                CategorySlug = slug
+            };
+
+            var posts = await _blogRepository.GetPostByQueryAsync(postQuery);
+
+            return View(posts);
+        }
+        
 
     }
 }
