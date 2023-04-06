@@ -13,13 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Authors\" />
-    <Folder Include="Areas\Admin\Views\Categories\" />
-    <Folder Include="Areas\Admin\Views\Comments\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
-    <Folder Include="Areas\Admin\Views\Tags\" />
-    <Folder Include="Areas\Admin\Views\Subcribers\" />
-    <Folder Include="Areas\Admin\Views\Posts\" />
     <Folder Include="Mapsters\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\templates\emails\" />

@@ -21,8 +21,8 @@
                 defaults: new { controller = "Blog", action = "Tag" }
               );
             endpoints.MapControllerRoute(
-                name: "single-post",
-                pattern: "blog/post/{year:int}/{month:int}/{day:int}/{slug}",
+                name: "single-posts",
+                pattern: "blog/posts/{year:int}/{month:int}/{day:int}/{slug}",
                 defaults: new { controller = "Blog", action = "Post" }
               );
             endpoints.MapControllerRoute(
