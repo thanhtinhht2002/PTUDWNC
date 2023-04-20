@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using MapsterMapper;
 
-namespace TatBlog.WebApi.Mapsters
+namespace TatBlog.WebApp.Mapsters
 {
     public static class MapsterDependencyInjection
     {
