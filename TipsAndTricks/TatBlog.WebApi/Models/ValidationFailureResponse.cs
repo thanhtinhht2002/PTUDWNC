@@ -3,8 +3,8 @@
     public class ValidationFailureResponse
     {
         public IEnumerable<string> Errors { get; set; }
-        public ValidationFailureResponse(
-            IEnumerable<string> errorsMessages)
+
+        public ValidationFailureResponse(IEnumerable<string> errorsMessages)
         {
             Errors = errorsMessages;
         }

@@ -2,37 +2,42 @@
 using TatBlog.WebApi.Extensions;
 using TatBlog.WebApi.Models;
 
-
-namespace TatBlog.WebApi.Filters;
-
-public class ValidatorFilter<T> : IEndpointFilter where T : class
+namespace TatBlog.WebApi.Filters
 {
-    private readonly IValidator<T> _validator;
-
-    public ValidatorFilter(IValidator<T> validator)
+    public class ValidatorFilter<T> : IEndpointFilter where T : class
     {
-        _validator = validator;
-    }
+        private readonly IValidator<T> _validator;
 
-    public async ValueTask<object> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
-    {
-        var model = context.Arguments.SingleOrDefault(x => x?.GetType() == typeof(T)) as T;
-
-        if (model == null)
+        public ValidatorFilter(IValidator<T> validator)
         {
-            return Results.BadRequest(new ValidationFailureResponse(new[]
+            _validator = validator;
+        }
+
+        public async ValueTask<object> InvokeAsync(
+            EndpointFilterInvocationContext context,
+            EndpointFilterDelegate next)
+        {
+            var model = context.Arguments.
+                SingleOrDefault(x => x?.GetType() == typeof(T)) as T;
+
+            if (model == null)
             {
-                "Could not create model object"
-            }));
+                return Results.BadRequest(
+                    new ValidationFailureResponse(new[]
+                {
+                    "Could not create model object"
+                }));
+            }
+
+            var validationResult = await _validator.ValidateAsync(model);
+
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(
+                    validationResult.Errors.ToResponse());
+            }
+
+            return await next(context);
         }
-
-        var validationResult = await _validator.ValidateAsync(model);
-
-        if (!validationResult.IsValid)
-        {
-            return Results.BadRequest(validationResult.Errors.ToResponse());
-        }
-
-        return await next(context);
     }
 }

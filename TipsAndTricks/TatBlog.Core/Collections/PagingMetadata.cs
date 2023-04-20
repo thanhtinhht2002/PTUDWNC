@@ -59,4 +59,8 @@ public class PagingMetadata : IPagedList
 	public bool IsFirstPage => (PageIndex <= 0);
 
 	public bool IsLastPage => (PageIndex >= (PageCount - 1));
+
+    int IPagedList.PageCount { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    int IPagedList.PageIndex { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    int IPagedList.PageSize { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }
